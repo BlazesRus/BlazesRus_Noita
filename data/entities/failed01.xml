@@ -1,0 +1,430 @@
+<Entity tags="mortal,hittable,teleportable_NOT, player_unit" name="$animal_boss_dragon_endcrystal">
+	<Base file="data/entities/base_projectile.xml" >
+		<VelocityComponent
+			air_friction="-1"
+			gravity_y="0" 
+			mass="0.09"
+			>
+		</VelocityComponent>
+	</Base>
+
+  <ProjectileComponent 
+    _enabled="1" 
+    lob_min="0.8"
+    lob_max="1.0"
+    speed_min="800"
+    speed_max="900"
+    friction="1"
+    direction_random_rad="0.03"
+    on_death_explode="1"
+    on_death_gfx_leave_sprite="0" 
+    on_lifetime_out_explode="1"
+    explosion_dont_damage_shooter="1" 
+	die_on_low_velocity="1"
+    on_collision_die="0"
+    lifetime="-1"
+    damage="0.35"
+    knockback_force="0.1"
+    velocity_sets_scale="0"
+    lifetime_randomness="7"
+	velocity_sets_rotation="1"
+    ragdoll_force_multiplier="0.0025"
+    hit_particle_force_multiplier="0.25 "
+    camera_shake_when_shot="0.4"
+    muzzle_flash_file="data/entities/particles/muzzle_flashes/muzzle_flash_magic_launcher.xml"
+    shoot_light_flash_r="250"
+    shoot_light_flash_g="250"
+    shoot_light_flash_b="250"
+    shoot_light_flash_radius="100"
+	knockback_force="2.8"
+	physics_impulse_coeff="4000"
+	>
+	<config_explosion
+      never_cache="1" 
+      damage="0.58"
+      camera_shake="20.0" 
+      explosion_radius="20"
+      explosion_sprite="" 
+      explosion_sprite_lifetime="0" 
+      create_cell_probability="0"
+      hole_destroy_liquid="0" 
+      hole_enabled="1" 
+      ray_energy="2050000"
+	  max_durability_to_destroy="11"
+      particle_effect="0" 
+      damage_mortals="1"
+	  physics_explosion_power.min="0.15"
+      physics_explosion_power.max="0.35"
+      physics_throw_enabled="1" 
+      shake_vegetation="1" 
+      sparks_count_max="50" 
+      sparks_count_min="60" 
+      sparks_enabled="1" 
+      light_enabled="0" 
+      stains_enabled="1"
+      stains_radius="1"
+	  spark_material="spark_white"
+      audio_enabled="0"
+	  >
+    </config_explosion>
+  </ProjectileComponent>
+
+  <LightComponent 
+    _enabled="1" 
+    radius="150" 
+    r="180"
+    g="180"
+    b="180">
+  </LightComponent>
+
+  <ParticleEmitterComponent 
+    emitted_material_name="spark_white"
+    count_min="1"
+    count_max="1"
+    offset.x="0"
+    offset.y="0"
+	gravity.y="0"
+    count_min="1"
+    count_max="1"
+    lifetime_min="0.1"
+    lifetime_max="0.3"
+	is_trail="1"
+	trail_gap="0.5"
+    emit_real_particles="0"
+    emit_cosmetic_particles="1"
+    emission_interval_min_frames="1"
+    emission_interval_max_frames="2"
+    is_emitting="1" >
+  </ParticleEmitterComponent>
+  
+  <AudioComponent
+      file="data/audio/Desktop/projectiles.snd"
+      event_root="projectiles/laser_small">
+  </AudioComponent>
+
+<!-- Player controller addition-->
+  <ControlsComponent 
+    _enabled="1" 
+    enabled="1" 
+    gamepad_fire_on_thumbstick_extend="0" 
+    gamepad_fire_on_thumbstick_extend_threshold="0.7" 
+    gamepad_indirect_aiming_enabled="0" 
+    polymorph_hax="1" 
+    polymorph_next_attack_frame="0" >
+
+  </ControlsComponent>
+
+<!-- Inventory Addition-->
+  <Inventory2Component
+    quick_inventory_slots="12"
+    full_inventory_slots_x="16"
+    full_inventory_slots_y="3">
+  </Inventory2Component>
+
+  <InventoryGuiComponent />
+  
+	<Entity name="inventory_quick">
+	</Entity>
+	<Entity name="inventory_full"/>
+
+	<CellEaterComponent
+		radius="1" >
+	</CellEaterComponent>
+
+	</PhysicsRagdollComponent>
+	<DamageModelComponent 
+		_enabled="1" 
+		air_needed="0" 
+		falling_damages="0" 
+		fire_damage_amount="0" 
+		fire_how_much_fire_generates="0" 
+		fire_probability_of_ignition="0" 
+		hp="70" 
+		materials_damage="1" 
+		materials_how_much_damage="0.1" 
+		materials_that_damage="acid" 
+		ragdoll_filenames_file=""
+		ragdoll_offset_y="-6"
+		>
+	</DamageModelComponent>
+
+	<PathFindingGridMarkerComponent
+		marker_offset_y="0"
+		marker_work_flag="16" >
+	</PathFindingGridMarkerComponent>
+
+	<GenomeDataComponent 
+		_enabled="1"
+		herd_id="boss_dragon"
+		food_chain_rank="20"
+		is_predator="1" >
+	</GenomeDataComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_head.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15" 
+		update_transform="0"
+		z_index="-0.45"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15" 
+		update_transform="0"
+		z_index="-0.44"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.43"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.42"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.41"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.40"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.39"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.38"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.37"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_body.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.36"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_enabled="1" 
+		alpha="1" 
+		image_file="data/enemies_gfx/dragon_tail.xml" 
+		rect_animation="eat" 
+		next_rect_animation="eat" 
+		next_rect_animation="" 
+		offset_x="17" 
+		offset_y="15"  
+		update_transform="0"
+		z_index="-0.35"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_tags="health_bar_back,ui,no_hitbox" 
+		_enabled="1" 
+		alpha="1" 
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_back.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="12" 
+		offset_y="42" 
+		rect_animation="" 
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		visible="1" 
+		z_index="-9000"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_tags="health_bar,ui,no_hitbox" 
+		_enabled="1" 
+		alpha="1" 
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_front.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="11" 
+		offset_y="42" 
+		rect_animation="" 
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		visible="1" 
+		z_index="-9000"
+		 >
+	</SpriteComponent>
+
+	<HealthBarComponent>
+	</HealthBarComponent>
+		
+	<LuaComponent
+		script_source_file="mods/ChasingProjectiles/files/evaisa/setlifetime.lua"
+		execute_on_added="1"
+		execute_every_n_frame="1"
+		execute_times="1">
+	</LuaComponent>
+	<LuaComponent
+		script_source_file="mods/ChasingProjectiles/files/evaisa/followmouse.lua"
+		execute_on_added="1"
+		execute_every_n_frame="1"
+		execute_times="-1">
+	</LuaComponent>
+<!-- Cursor Addition-->
+  <SpriteComponent 
+    _tags="aiming_reticle" 
+    alpha="1" 
+    image_file="data/ui_gfx/mouse_cursor.png"
+    ui_is_parent="0" 
+    offset_x="6" 
+    offset_y="35" 
+    has_special_scale="1"
+    special_scale_x="1"
+    special_scale_y="1"
+    z_index="-10000"
+    emissive="1" >
+  </SpriteComponent>
+		
+	<LightComponent 
+		_enabled="1" 
+		radius="100"
+		r="255"
+		g="149"
+		b="0" >
+	</LightComponent>
+	
+    <LuaComponent
+        script_source_file="mods/ChasingProjectiles/files/evaisa/homingloop.lua"
+        vm_type="ONE_PER_COMPONENT_INSTANCE"
+        enable_coroutines="1"
+        execute_on_added="1"
+        execute_every_n_frame="-1"
+        execute_times="1" >
+    </LuaComponent>
+	
+<!-- Player Stats-->
+  <GameLogComponent
+      report_damage="0"
+      report_death="1" >
+  </GameLogComponent>
+
+  <GameStatsComponent is_player="1" />
+
+  <!-- alchemy related things -->
+  <MaterialInventoryComponent 
+      _tags="ingestion"
+      drop_as_item="0"
+      on_death_spill="0"
+      kill_when_empty="0"
+      >
+  </MaterialInventoryComponent>
+  
+  <IngestionComponent DEBUG_allmaterials="0" ingestible_materials="cheese_static" >
+  </IngestionComponent>
+
+  <LuaComponent 
+      script_inhaled_material="data/scripts/magic/alchemy.lua"
+      script_ingested_material="data/scripts/magic/alchemy.lua"
+      >
+  </LuaComponent>
+
+  <LuaComponent 
+      execute_on_added="1"
+      remove_after_executed="1"
+      execute_every_n_frame="-1"
+      script_source_file="data/scripts/magic/alchemy_init.lua" >
+  </LuaComponent>
+
+  <WalletComponent />
+
+  <StreamingKeepAliveComponent />
+</Entity>

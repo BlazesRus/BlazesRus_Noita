@@ -1,0 +1,176 @@
+<Entity 
+  name="$projectile_default"  tags="mortal,human,hittable,peasant,prey,player_unit,teleportable"
+   >
+
+	<Base file="data/entities/base_projectile.xml" >
+		<VelocityComponent
+    		gravity_y="0"
+			air_friction="0"
+			mass="0.05"
+			>
+    	</VelocityComponent> 
+	</Base>
+
+  <ProjectileComponent 
+    _enabled="1" 
+	lob_min="0.8"
+  	lob_max="1.0"
+  	speed_min="350"
+  	speed_max="350"
+    die_on_low_velocity="0"
+    on_death_explode="1"
+    on_death_gfx_leave_sprite="0" 
+    on_lifetime_out_explode="1"
+	explosion_dont_damage_shooter="1"
+    damage="0.4"
+    on_collision_die="1"
+    lifetime="-1" 
+	knockback_force="1.0"
+	>
+    <config_explosion
+      never_cache="1" 
+      camera_shake="0" 
+      explosion_radius="10" 
+      explosion_sprite="data/particles/explosion_016_plasma_green.xml" 
+      explosion_sprite_lifetime="0.0" 
+      create_cell_probability="0" 
+      create_cell_material="" 
+	  ray_energy="5000"
+      hole_destroy_liquid="1" 
+      hole_enabled="1" 
+      hole_image="data/temp/explosion_hole.png"
+	  explosion_sprite_emissive="1"
+	  explosion_sprite_additive="1"
+      particle_effect="0" 
+      damage_mortals="0"
+	  physics_explosion_power.min="0.24" 
+      physics_explosion_power.max="0.34"
+      physics_throw_enabled="1" 
+      shake_vegetation="1" 
+      sparks_enabled="0" 
+      sparks_count_max="0" 
+      sparks_count_min="0"
+      light_fade_time="0.8" 
+	  light_r="10"
+	  light_g="60"
+      light_b="10"
+      stains_enabled="0" 
+      stains_image="data/temp/explosion_stain.png" >
+    </config_explosion>
+  </ProjectileComponent>
+  
+<!-- Player controller addition-->
+  <ControlsComponent 
+    _enabled="1" 
+    enabled="1" 
+    gamepad_fire_on_thumbstick_extend="0" 
+    gamepad_fire_on_thumbstick_extend_threshold="0.7" 
+    gamepad_indirect_aiming_enabled="0" 
+    polymorph_hax="1" 
+    polymorph_next_attack_frame="0" >
+
+  </ControlsComponent>
+
+<!-- Inventory Addition-->
+  <Inventory2Component
+    quick_inventory_slots="12"
+    full_inventory_slots_x="16"
+    full_inventory_slots_y="3">
+  </Inventory2Component>
+
+  <InventoryGuiComponent />
+  
+	<Entity name="inventory_quick">
+	</Entity>
+	<Entity name="inventory_full"/>
+
+  <SpriteComponent 
+    _enabled="1" 
+    alpha="1" 
+    image_file="data/projectiles_gfx/orb_green.xml" 
+    next_rect_animation="" 
+    offset_x="6" 
+    offset_y="6" 
+    rect_animation="spawn" 
+     
+     
+	update_transform_rotation="0"
+	>
+  </SpriteComponent>
+  
+  <SpriteComponent 
+    _enabled="1" 
+    alpha="1" 
+    image_file="data/projectiles_gfx/orb_green.xml" 
+    next_rect_animation="" 
+    offset_x="6" 
+    offset_y="6" 
+    rect_animation="spawn" 
+	emissive="1"
+    additive="1"
+     
+	update_transform_rotation="0"
+	>
+  </SpriteComponent>
+  
+<!-- Cursor Addition-->
+  <SpriteComponent 
+    _tags="aiming_reticle" 
+    alpha="1" 
+    image_file="data/ui_gfx/mouse_cursor.png"
+    ui_is_parent="0" 
+    offset_x="6" 
+    offset_y="35" 
+    has_special_scale="1"
+    special_scale_x="1"
+    special_scale_y="1"
+    z_index="-10000"
+    emissive="1" >
+  </SpriteComponent>
+
+  <LightComponent 
+    _enabled="1" 
+    radius="150" 
+    r="30"
+    g="90"
+    b="30">
+  </LightComponent>
+
+<!-- Player Stats-->
+  <GameLogComponent
+      report_damage="0"
+      report_death="1" >
+  </GameLogComponent>
+
+  <GameStatsComponent is_player="1" />
+
+  <!-- alchemy related things -->
+  <MaterialInventoryComponent 
+      _tags="ingestion"
+      drop_as_item="0"
+      on_death_spill="0"
+      kill_when_empty="0"
+      >
+  </MaterialInventoryComponent>
+  
+  <IngestionComponent DEBUG_allmaterials="0" ingestible_materials="cheese_static" >
+  </IngestionComponent>
+
+  <LuaComponent 
+      script_inhaled_material="data/scripts/magic/alchemy.lua"
+      script_ingested_material="data/scripts/magic/alchemy.lua"
+      >
+  </LuaComponent>
+
+  <LuaComponent 
+      execute_on_added="1"
+      remove_after_executed="1"
+      execute_every_n_frame="-1"
+      script_source_file="data/scripts/magic/alchemy_init.lua" >
+  </LuaComponent>
+
+  <WalletComponent />
+
+  <StreamingKeepAliveComponent />
+
+ </Entity>
