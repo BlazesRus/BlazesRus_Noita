@@ -17,11 +17,11 @@
         throw_as_item="0" 
         ui_name="CustomWand" 
         use_gun_script="1" 
-        add_these_child_actions="BlazesDAMAGE_FRIENDLY,BlazesPolymorph_GhostWorm"
+        add_these_child_actions="BLAZESGATEMORPHGHOSTWORM"
         ><gun_config 
             shuffle_deck_when_empty="0"
             reload_time="12"
-            deck_capacity="25" >
+            deck_capacity="24" >
         </gun_config>
         <gunaction_config 
             fire_rate_wait="8" >
@@ -34,18 +34,16 @@
         offset.y="0.5" >
     </HotspotComponent>
 	
-    <Base file="data/entities/base_item.xml" >
+    <Base file="files/base_CustomWand.xml" >
         <ItemComponent
-            item_name="CustomWand"
-            remove_on_death="0"
-            collect_nondefault_actions="1" >
+            item_name="CustomWand" >
         </ItemComponent>
     </Base>
 
     <LuaComponent 
         execute_on_added="1"
         remove_after_executed="1"
-        script_source_file="mods/BlazesRus/files/scripts/CustomWandGen.lua"
+        script_source_file="files/scripts/CustomWandGen.lua"
         >
     </LuaComponent>
 

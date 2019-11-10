@@ -1,5 +1,5 @@
 <Entity 
-  name="$projectile_default" 
+  name="TransformationGateProj01" 
    >
   <GameAreaEffectComponent
       radius="28"
@@ -29,7 +29,8 @@
   	<ParticleEmitterComponent 
 		emitted_material_name="plasma_fading_pink"
 		gravity.y="0.0"
-		lifetime="1"
+		lifetime_min="0.5"
+		lifetime_max="1.5"
 		count_min="4"
 		count_max="4"
 		render_on_grid="1"
@@ -68,6 +69,10 @@
 			damage_game_effect_entities="files/SelfPolymorphEffect01.xml,"
 			friendly_fire="1"
 			on_collision_die="1"
+			collide_with_shooter_frames="12"
+			penetrate_world="1" on_collision_remove_projectile="1"
+			die_on_liquid_collision="1" collide_with_tag="mortal" collide_with_world="0"
+			lifetime="200"
 			>
 			<config_explosion
 				explosion_sprite="data/particles/blast_out_polymorph.xml"

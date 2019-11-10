@@ -5,5 +5,3 @@ end
 
 -- This code runs when all mods' filesystems are registered
 ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "files/actions.lua" )
---ModMaterialsFileAdd( "files/materials_Addition.xml" )
-ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/BlazesRus_Noita/files/actions.lua" )

@@ -1,5 +1,5 @@
 <Entity 
-  tags="mortal,hittable,teleportable_NOT,homing_target" 
+  tags="mortal,hittable,teleportable_NOT,homing_target, player_unit" 
   name="$animal_worm_skull"
   >
   <_Transform 
@@ -38,6 +38,22 @@
     give_up_time_frames="250"
      >
   </WormAIComponent> 
+  
+<!-- Player controller addition-->
+  <ControlsComponent 
+    _enabled="1" 
+    enabled="1" 
+    gamepad_fire_on_thumbstick_extend="0" 
+    gamepad_fire_on_thumbstick_extend_threshold="0.7" 
+    gamepad_indirect_aiming_enabled="0" 
+    polymorph_hax="1" 
+    polymorph_next_attack_frame="0" >
+
+  </ControlsComponent>
+  
+  <GameStatsComponent is_player="1" />
+  
+    <InventoryGuiComponent />
   
   <DamageModelComponent 
     _enabled="1" 
@@ -327,4 +343,5 @@
     event_root="animals/ghost" >
   </AudioComponent>
 
+  <StreamingKeepAliveComponent />
 </Entity>
